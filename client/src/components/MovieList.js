@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Card, Image } from 'semantic-ui-react';
 
 class MovieList extends Component {
   state = {movies: []}
@@ -18,7 +19,6 @@ class MovieList extends Component {
       this.setState({ movies: res.data })
     })
     .catch( err => {
-      debugger
     })
   }
 
@@ -28,15 +28,20 @@ class MovieList extends Component {
 
   render() {
     return(
-      <div>
+      <Card.Group>
       { this.state.movies.map( movies =>
-        <ul>
-          <li>{movies.title}</li>
-          <li>{movies.summary}</li>
-        </ul>
+        <Card>
+          <Image src='https://robohash.org/set_set4' />
+          <Card.Header>
+            {movies.title}
+          </Card.Header>
+          <Card.Description>
+            {movies.summary}
+          </Card.Description>
+        </Card>
         ) 
       }
-      </div>
+    </Card.Group>
     )
   }
 }  
