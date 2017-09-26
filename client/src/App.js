@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-import MovieForm from './components/MovieForm';
+import MovieList from './components/MovieList';
 
 class App extends Component {
-  state = { movies: [] }
+ 
   
   
   
   render() {
     return (
-      <div className="container">
-        <MovieForm  />
+      <div>
+        <MovieList  />
       </div>
     );
   }
