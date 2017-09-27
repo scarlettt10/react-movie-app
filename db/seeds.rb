@@ -1,7 +1,9 @@
-100.times do
+3.times do
   Movie.create(
     title: Faker::Overwatch.hero,
-    summary: Faker::Lorem.paragraph(4),
+    summary: Faker::Overwatch.quote,
  
   )
 end
+
+puts 'Heros Never Die'

@@ -1,25 +1,38 @@
 import React from 'react';
+import axios from 'axios';
+import { Button } from 'semantic-ui-react';
 
 class MovieForm extends React.Component {
-  state = {name: ''}
+  state = {movies: ''}
 
   
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addItem(this.state.name);
-    this.setState({ name: '' })
-  }
+    axios.post('/api/movies/') 
+    .then( res => {
+      this.setState({ movies: res.data })
+    })
+    }
+  
+  
 
   render () {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
-          placeholder='Add A Movie'
+          value={this.state.title}
+          placeholder='Title'
+          type='text'
           required
-          value={this.state.name}
-          onChange={this.handleChange}
         />
+        <input
+          value={this.state.summary}
+          placeholder='Description'
+          type='text'
+          required
+        />
+        <Button type='submit'>Submit</Button>
       </form>
     )
   }
